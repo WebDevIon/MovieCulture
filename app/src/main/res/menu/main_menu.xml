@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- The main menu found in the discovery activity -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- This options will take the user to the about section
+     of the app-->
+    <item
+        android:id="@+id/action_about"
+        android:title="@string/about_menu_option"
+        app:showAsAction="never"/>
+
+    <!-- This option will take the user to the settings menu -->
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/settings_menu_option"
+        app:showAsAction="never"/>
+
+</menu>

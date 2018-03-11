@@ -1,3 +1,8 @@
 <resources>
+    <!-- Application name -->
     <string name="app_name">Movie Culture</string>
+    <!-- Settings menu string -->
+    <string name="settings_menu_option">Settings</string>
+    <!-- About menu string -->
+    <string name="about_menu_option">About</string>
 </resources>

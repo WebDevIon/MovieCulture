@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<!-- The main screen of the app. Here a grid with two columns
+    will display the movie posters ordered how the user has
+    chosen through the settings menu. -->
+
+<GridView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/discovery_activity_gv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.movieculture.DiscoveryActivity">
+    android:gravity="center"
+    android:numColumns="2"
+    android:stretchMode="columnWidth">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</android.support.constraint.ConstraintLayout>
+</GridView>
