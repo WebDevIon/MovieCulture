@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Checkbox preference to set the sort criteria to popularity -->
+    <CheckBoxPreference
+        android:defaultValue="@bool/sort_by_popularity"
+        android:key="@string/sort_by_popularity_key"
+        android:title="@string/sort_by_popularity_string"/>
+
+    <!-- Checkbox preference to set the sort criteria to user review -->
+    <CheckBoxPreference
+        android:defaultValue="@bool/sort_by_user_rating"
+        android:key="@string/sort_by_user_rating_key"
+        android:title="@string/sort_by_user_rating_string"/>
+
+</PreferenceScreen>

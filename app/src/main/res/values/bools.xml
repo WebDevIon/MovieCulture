@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Boolean value used to sort the movies by the popularity criteria -->
+    <bool name="sort_by_popularity">true</bool>
+    <!-- Boolean value used to sort the movies by the user rating criteria -->
+    <bool name="sort_by_user_rating">false</bool>
+</resources>

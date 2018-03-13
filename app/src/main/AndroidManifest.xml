@@ -16,6 +16,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- The manifest entry for Settings Activity -->
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/settings_menu_option"
+            android:parentActivityName=".DiscoveryActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DiscoveryActivity"/>
+        </activity>
+
+        <!-- The manifest entry for About Activity -->
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/about_menu_option"
+            android:parentActivityName=".DiscoveryActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DiscoveryActivity"/>
+        </activity>
+
     </application>
 
 </manifest>

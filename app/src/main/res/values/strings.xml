@@ -1,8 +1,16 @@
 <resources>
     <!-- Application name -->
     <string name="app_name">Movie Culture</string>
-    <!-- Settings menu string -->
+    <!-- Settings menu string also used as the label of Settings activity -->
     <string name="settings_menu_option">Settings</string>
-    <!-- About menu string -->
+    <!-- About menu string also used as the label of About activity -->
     <string name="about_menu_option">About</string>
+    <!-- Settings menu option title for the sort by popularity option -->
+    <string name="sort_by_popularity_string">Sort by popularity</string>
+    <!-- Settings menu key for the sort by popularity option -->
+    <string name="sort_by_popularity_key">popularity</string>
+    <!-- Settings menu option title for the sort by user rating option -->
+    <string name="sort_by_user_rating_string">Sort by user rating</string>
+    <!-- Settings menu key for the sort by user rating option -->
+    <string name="sort_by_user_rating_key">rating</string>
 </resources>

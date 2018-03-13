@@ -1,11 +1,11 @@
 package com.example.android.movieculture;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 public class DiscoveryActivity extends AppCompatActivity {
 
@@ -50,16 +50,14 @@ public class DiscoveryActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         // If the id matches that of the About menu item then we launch the About Activity
-        // TODO: Create an activity fragment for the About Activity.
         if (id == R.id.action_about) {
-            Toast.makeText(this, "About menu pressed", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, AboutActivity.class));
             return true;
         }
 
         // If the id matches that of the Settings menu item then we launch the Menu Activity
-        // TODO: Create an activity fragment for the Menu Activity.
         if (id == R.id.action_settings) {
-            Toast.makeText(this, "Settings menu pressed", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
 
