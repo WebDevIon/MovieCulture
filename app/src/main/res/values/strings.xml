@@ -1,16 +1,57 @@
 <resources>
+
+    <!-- - - - - - - - - - - - - - - -
+      - Used throughout MovieCulture -
+      - - - - - - - - - - - - - - - -->
+
     <!-- Application name -->
-    <string name="app_name">Movie Culture</string>
+    <string name="app_name" translatable="false">Movie Culture</string>
+
     <!-- Settings menu string also used as the label of Settings activity -->
     <string name="settings_menu_option">Settings</string>
+
     <!-- About menu string also used as the label of About activity -->
     <string name="about_menu_option">About</string>
-    <!-- Settings menu option title for the sort by popularity option -->
-    <string name="sort_by_popularity_string">Sort by popularity</string>
-    <!-- Settings menu key for the sort by popularity option -->
-    <string name="sort_by_popularity_key">popularity</string>
-    <!-- Settings menu option title for the sort by user rating option -->
-    <string name="sort_by_user_rating_string">Sort by user rating</string>
-    <!-- Settings menu key for the sort by user rating option -->
-    <string name="sort_by_user_rating_key">rating</string>
+
+
+    <!-- - - - - - - - - - - - - - - - - -
+      - Used by MovieCulture Preferences -
+      - - - - - - - - - - - - - - - - - -->
+
+    <!-- Settings menu label for the sort option -->
+    <string name="sort_by_label">Sort by</string>
+
+    <!-- Settings menu label for the sort by popularity option -->
+    <string name="sort_by_popularity_label">Popularity</string>
+
+    <!-- Settings menu value for the sort by popularity option -->
+    <string name="sort_by_popularity" translatable="false">popularity</string>
+
+    <!-- Settings menu label for the sort by user rating option -->
+    <string name="sort_by_user_rating_label">User rating</string>
+
+    <!-- Settings menu value for the sort by user rating option -->
+    <string name="sort_by_user_rating" translatable="false">rating</string>
+
+    <!-- Settings menu key for the sort option -->
+    <string name="sort_key" translatable="false">sort</string>
+
+
+    <!-- - - - - - - - - - - - - - - - - - -
+      - Used by MovieCulture About Section -
+      - - - - - - - - - - - - - - - - - - -->
+
+    <!-- About section content description for the TMDb logo -->
+    <string name="tmdb_logo" translatable="false">TMDB Logo</string>
+
+    <!-- About section disclaimer for using the TMDb -->
+    <string name="tmdb_disclaimer">
+        This product uses the TMDb API but is not endorsed or certified by TMDb.
+    </string>
+
+    <!-- About section description of the app -->
+    <string name="app_description">
+        This app was made by Alin Simon as a project for the Android Developer Nanodegree by Udacity.
+    </string>
+
 </resources>

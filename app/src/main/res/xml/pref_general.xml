@@ -4,16 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Checkbox preference to set the sort criteria to popularity -->
-    <CheckBoxPreference
+    <!-- Checkbox preference to set the sort criteria of the movies -->
+    <ListPreference
         android:defaultValue="@bool/sort_by_popularity"
-        android:key="@string/sort_by_popularity_key"
-        android:title="@string/sort_by_popularity_string"/>
-
-    <!-- Checkbox preference to set the sort criteria to user review -->
-    <CheckBoxPreference
-        android:defaultValue="@bool/sort_by_user_rating"
-        android:key="@string/sort_by_user_rating_key"
-        android:title="@string/sort_by_user_rating_string"/>
+        android:entries="@array/pref_sort_options"
+        android:entryValues="@array/pref_sort_values"
+        android:key="@string/sort_key"
+        android:title="@string/sort_by_label"/>
 
 </PreferenceScreen>

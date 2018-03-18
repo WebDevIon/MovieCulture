@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The arrays used in the List Preference menu for selecting the sort type -->
+<resources>
+    <string-array name="pref_sort_options">
+        <item>@string/sort_by_popularity_label</item>
+        <item>@string/sort_by_user_rating_label</item>
+    </string-array>
+
+    <string-array name="pref_sort_values">
+        <item>@string/sort_by_popularity</item>
+        <item>@string/sort_by_user_rating</item>
+    </string-array>
+</resources>
