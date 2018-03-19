@@ -54,4 +54,40 @@
         This app was made by Alin Simon as a project for the Android Developer Nanodegree by Udacity.
     </string>
 
+
+    <!-- - - - - - - - - - - - - - - - -
+      - Used by movie detail activity -
+      - - - - - - - - - - - - - - - - -->
+
+    <!-- Content description for the movie poster in detail activity -->
+    <string name="detail_activity_movie_poster_description">Movie poster</string>
+
+    <!-- Release date string in detail activity -->
+    <string name="release_date_string">Release date:</string>
+
+    <!-- Average rating string in detail activity -->
+    <string name="average_rating_string">Average rating:</string>
+
+    <!-- Plot synopsis string in detail activity -->
+    <string name="plot_synopsis_string">Plot synopsis:</string>
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - -
+      - Dummy data for the movie detail activity -
+      - - - - - - - - - - - - - - - - - - - - - -->
+
+    <!-- Test string for the movie title -->
+    <string name="movie_title_test_string" translatable="false">Interstellar</string>
+
+    <!-- Test string for the release date -->
+    <string name="release_date_test_string" translatable="false">November 7, 2014</string>
+
+    <!-- Test string for the average rating -->
+    <string name="average_rating_test_string" translatable="false">8.1/10</string>
+
+    <!-- Test string for the plot synopsis -->
+    <string name="plot_synopsis_test_string" translatable="false">
+        Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.
+    </string>
+
 </resources>

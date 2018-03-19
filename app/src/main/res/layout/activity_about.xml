@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/about_tv"
         style="@style/about_description_text_style"
         android:text="@string/app_description"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,22 +17,22 @@
         app:layout_constraintVertical_chainStyle="spread_inside"/>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/disclaimer_tv"
         style="@style/about_description_text_style"
         android:text="@string/tmdb_disclaimer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/about_tv"
         app:layout_constraintVertical_chainStyle="spread_inside"/>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/logo_iv"
         style="@style/about_logo_style"
         android:src="@drawable/ic_powered_by_rectangle_green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/disclaimer_tv" />
 
 </android.support.constraint.ConstraintLayout>
