@@ -4,13 +4,21 @@
     will display the movie posters ordered how the user has
     chosen through the settings menu. -->
 
-<GridView
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/discovery_activity_gv"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:numColumns="2"
-    android:stretchMode="columnWidth">
+    android:layout_height="match_parent">
 
-</GridView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/discovery_activity_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+</android.support.constraint.ConstraintLayout>
