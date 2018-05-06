@@ -2,6 +2,10 @@ package com.example.android.movieculture.model;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * This class is responsible for creating Movie objects which will store the needed movie
+ * attributes recieved from TMDB API.
+ */
 public class Movie {
     @SerializedName("title")
     private String title;
@@ -14,6 +18,14 @@ public class Movie {
     @SerializedName("overview")
     private String overview;
 
+    /**
+     * Constructor for the Movie class.
+     * @param title the title of the movie.
+     * @param releaseDate the release date of the movie.
+     * @param posterPath the URL path to the movie poster.
+     * @param voteAverage the vote average of the movie.
+     * @param overview the plot synopsis.
+     */
     public Movie(String title, String releaseDate, String posterPath, Double voteAverage, String overview) {
         this.title = title;
         this.releaseDate = releaseDate;
@@ -22,6 +34,9 @@ public class Movie {
         this.overview = overview;
     }
 
+    /**
+     * Here we declare all the setters and getters of the Movie object parameters.
+     */
     public void setTitle(String title) {
         this.title = title;
     }
