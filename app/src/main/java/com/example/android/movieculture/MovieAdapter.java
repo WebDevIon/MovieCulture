@@ -8,16 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.android.movieculture.rest.ApiClient;
 import com.example.android.movieculture.model.Movie;
+import com.example.android.movieculture.rest.ApiClient;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
     private Context context;
-    private List<Movie> movies;
+    private ArrayList<Movie> movies;
 
     public class MovieViewHolder extends RecyclerView.ViewHolder {
 
@@ -30,7 +30,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         }
     }
 
-    public MovieAdapter (List<Movie> movies, Context context) {
+    public MovieAdapter (ArrayList<Movie> movies, Context context) {
         this.movies = movies;
         this.context = context;
     }
@@ -49,8 +49,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
         Picasso.get()
                 .load(ApiClient.BASE_IMAGE_URL + movies.get(position).getPosterPath())
-                .fit()
-                .centerCrop()
                 .into(holder.moviePoster);
     }
 

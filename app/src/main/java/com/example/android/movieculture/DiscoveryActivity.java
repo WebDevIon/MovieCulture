@@ -1,9 +1,11 @@
 package com.example.android.movieculture;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,9 +16,8 @@ import android.view.MenuItem;
 import com.example.android.movieculture.model.Movie;
 import com.example.android.movieculture.model.MovieResponse;
 import com.example.android.movieculture.rest.ApiClient;
-import com.example.android.movieculture.rest.TheMovieDatabaseAPI;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,36 +26,38 @@ import retrofit2.Response;
 public class DiscoveryActivity extends AppCompatActivity {
 
     private static final String TAG = DiscoveryActivity.class.getSimpleName();
+    public RecyclerView mRecyclerView;
+    public ArrayList<Movie> mMovies = new ArrayList<>();
+    public static String mSearchParam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.discovery_activity);
 
-        final RecyclerView recyclerView = findViewById(R.id.discovery_activity_rv);
+        // Here we initialize the RecyclerView and set the type of LayoutManager.
+        mRecyclerView = findViewById(R.id.discovery_activity_rv);
         GridLayoutManager layoutManager =
                 new GridLayoutManager(this, 2);
-        recyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setLayoutManager(layoutManager);
 
-        TheMovieDatabaseAPI theMovieDatabaseAPI = ApiClient.getClient().create(TheMovieDatabaseAPI.class);
+        // Here we check to see if the search parameter was initialized, if not then we set it
+        // according to the value we get from SharedPreferences, this way we ensure that the
+        // user preferences remain the same even if the app is closed.
+        if (mSearchParam == null) {
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+            mSearchParam = getSearchParamFromPreferences(prefs);
+        }
 
-        // TODO: Change the query parameter according to the settings menu.
-        Call<MovieResponse> call = theMovieDatabaseAPI.getPopularMovies(BuildConfig.API_KEY);
-        call.enqueue(new Callback<MovieResponse>() {
-
+        // Here we start the Retrofit enqueue and we populate he ArrayList mMovies with Movie
+        // objects accordingly to the network response.
+        ApiClient.getCall(mSearchParam).enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(@NonNull Call<MovieResponse> call,
                                    @NonNull Response<MovieResponse> response) {
-
-                if (response.isSuccessful()) {
-                    List<Movie> movies = response.body().getResults();
-                    Log.d(TAG, "Number of movies: " + movies.size());
-                    MovieAdapter adapter = new MovieAdapter(movies, getApplicationContext());
-                    recyclerView.setAdapter(adapter);
-                } else {
-                    Log.d("MovieResponse Callback", "Code: " + response.code()
-                            + "Message: " + response.message());
-                }
+                mMovies = response.body().getResults();
+                MovieAdapter adapter = new MovieAdapter(mMovies, getApplicationContext());
+                mRecyclerView.setAdapter(adapter);
             }
 
             @Override
@@ -63,6 +66,19 @@ public class DiscoveryActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    /**
+     * This method is responsible for getting the current preference setting value regarding
+     * the movie sort order.
+     *
+     * @param sharedPreferences the SharedPreferences that contains the setting value.
+     *
+     * @return the string that contains the value needed to sort the movies.
+     */
+    public String getSearchParamFromPreferences (SharedPreferences sharedPreferences) {
+        return sharedPreferences.getString(getString(R.string.sort_key),
+                getString(R.string.sort_by_popularity));
     }
 
     /**
@@ -113,4 +129,5 @@ public class DiscoveryActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

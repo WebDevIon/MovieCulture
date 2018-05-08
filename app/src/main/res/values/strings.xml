@@ -33,13 +33,13 @@
     <string name="sort_by_popularity_label">Popularity</string>
 
     <!-- Settings menu value for the sort by popularity option -->
-    <string name="sort_by_popularity" translatable="false">popularity</string>
+    <string name="sort_by_popularity" translatable="false">popular</string>
 
     <!-- Settings menu label for the sort by user rating option -->
     <string name="sort_by_user_rating_label">User rating</string>
 
     <!-- Settings menu value for the sort by user rating option -->
-    <string name="sort_by_user_rating" translatable="false">rating</string>
+    <string name="sort_by_user_rating" translatable="false">top_rated</string>
 
     <!-- Settings menu key for the sort option -->
     <string name="sort_key" translatable="false">sort</string>

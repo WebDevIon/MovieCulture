@@ -8,6 +8,8 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceScreen;
 
+import com.example.android.movieculture.rest.ApiClient;
+
 /**
  * This fragment serves as the display for all the user settings.
  * For now the user will be able to change the sort order of the movies by popularity
@@ -19,9 +21,13 @@ import android.support.v7.preference.PreferenceScreen;
 public class SettingsFragment extends PreferenceFragmentCompat implements
         SharedPreferences.OnSharedPreferenceChangeListener {
 
+    private static final String TAG = SettingsFragment.class.getSimpleName();
+
     /**
      * Method used to set the summary of the preference to the current value
+     *
      * @param preference the preference that we want to set the summary of the current value
+     *
      * @param value the current value of the preference.
      */
     private void setPreferenceSummary(Preference preference, Object value) {
@@ -83,7 +89,12 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        // TODO: Implement functionality to update the API Request URL accordingly to the preferences.
+        // Here we update the API Request URL accordingly to the preferences and we create
+        // a Call<MovieResponse> object specific to the new URL.
+        if (key.equals(getString(R.string.sort_key))) {
+            DiscoveryActivity.mSearchParam = sharedPreferences.getString(key, "");
+            ApiClient.getCall(DiscoveryActivity.mSearchParam);
+        }
 
         // Here we update the preference summary when a preference is changed.
         Preference preference = findPreference(key);

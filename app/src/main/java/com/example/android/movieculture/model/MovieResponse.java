@@ -2,7 +2,7 @@ package com.example.android.movieculture.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Since there are a lot of movies this class is responsible for taking the response from
@@ -17,7 +17,7 @@ public class MovieResponse {
     @SerializedName("total_pages")
     private int totalPages;
     @SerializedName("results")
-    private List<Movie> results;
+    private ArrayList<Movie> results;
 
     /**
      * Setters and getters for the parameters.
@@ -46,11 +46,11 @@ public class MovieResponse {
         return totalPages;
     }
 
-    public void setResults(List<Movie> results) {
+    public void setResults(ArrayList<Movie> results) {
         this.results = results;
     }
 
-    public List<Movie> getResults() {
+    public ArrayList<Movie> getResults() {
         return results;
     }
 }

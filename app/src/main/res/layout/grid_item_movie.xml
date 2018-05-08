@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<!-- The ImageView that will hold the poster from the DiscoveryActivity -->
+
+<ImageView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:id="@+id/discovery_activity_poster_iv"
     android:layout_width="match_parent"
-    android:layout_height="300dp">
-
-    <ImageView
-        android:id="@+id/discovery_activity_poster_iv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/discovery_activity_poster_description"/>
-
-</LinearLayout>
+    android:layout_height="wrap_content"
+    android:adjustViewBounds="true"
+    android:contentDescription="@string/discovery_activity_poster_description"/>
