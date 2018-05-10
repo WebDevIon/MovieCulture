@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.4" />
+
+        <ImageView
+            android:id="@+id/detail_activity_movie_poster_iv"
+            style="@style/movie_detail_poster_style"
+            android:contentDescription="@string/detail_activity_movie_poster_description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:src="@drawable/detail_activity_test_image" />
+
+        <TextView
+            android:id="@+id/release"
+            style="@style/movie_detail_release_string_tv_style"
+            android:layout_marginTop="8dp"
+            android:text="@string/release_date_string"
+            app:layout_constraintBottom_toTopOf="@+id/detail_activity_release_date_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/detail_activity_movie_poster_iv"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/detail_activity_release_date_tv"
+            style="@style/movie_detail_general_text_style"
+            app:layout_constraintBottom_toTopOf="@+id/rating"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/release"
+            tools:text="@string/release_date_test_string" />
+
+        <TextView
+            android:id="@+id/rating"
+            style="@style/movie_detail_rating_string_tv_style"
+            android:text="@string/average_rating_string"
+            app:layout_constraintBottom_toTopOf="@+id/detail_activity_vote_average_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/detail_activity_release_date_tv" />
+
+        <TextView
+            android:id="@+id/detail_activity_vote_average_tv"
+            style="@style/movie_detail_general_text_style"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/rating"
+            tools:text="@string/average_rating_test_string" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

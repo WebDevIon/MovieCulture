@@ -68,6 +68,8 @@ public class DiscoveryActivity extends AppCompatActivity {
 
     }
 
+
+
     /**
      * This method is responsible for getting the current preference setting value regarding
      * the movie sort order.

@@ -1,74 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        android:id="@+id/detail_activity_movie_poster_iv"
-        style="@style/movie_detail_poster_style"
-        android:contentDescription="@string/detail_activity_movie_poster_description"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_activity_title_tv"
-        tools:src="@drawable/detail_activity_test_image" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/detail_activity_title_tv"
-        style="@style/movie_detail_title_style"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/movie_title_test_string" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/release"
-        style="@style/movie_detail_release_string_tv_style"
-        android:text="@string/release_date_string"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/detail_activity_movie_poster_iv"
-        app:layout_constraintTop_toTopOf="@+id/detail_activity_movie_poster_iv" />
+            <include
+                android:id="@+id/title_info"
+                layout="@layout/movie_title_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/detail_activity_release_date_tv"
-        style="@style/movie_detail_general_text_style"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/detail_activity_movie_poster_iv"
-        app:layout_constraintTop_toBottomOf="@+id/release"
-        tools:text="@string/release_date_test_string" />
+            <include
+                android:id="@+id/primary_info"
+                layout="@layout/primary_movie_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/rating"
-        style="@style/movie_detail_rating_string_tv_style"
-        android:text="@string/average_rating_string"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/detail_activity_movie_poster_iv"
-        app:layout_constraintTop_toBottomOf="@+id/detail_activity_release_date_tv" />
+            <include
+                android:id="@+id/secondary_info"
+                layout="@layout/secondary_movie_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/detail_activity_vote_average_tv"
-        style="@style/movie_detail_general_text_style"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/detail_activity_movie_poster_iv"
-        app:layout_constraintTop_toBottomOf="@+id/rating"
-        tools:text="@string/average_rating_test_string" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/synopsis"
-        style="@style/movie_detail_plot_string_tv_style"
-        android:text="@string/plot_synopsis_string"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_activity_movie_poster_iv" />
+    </ScrollView>
 
-    <TextView
-        android:id="@+id/detail_activity_plot_synopsis_tv"
-        style="@style/movie_detail_description_tv_style"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/synopsis"
-        tools:text="@string/plot_synopsis_test_string" />
-
-</android.support.constraint.ConstraintLayout>
+</layout>

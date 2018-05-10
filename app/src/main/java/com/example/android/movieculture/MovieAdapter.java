@@ -19,6 +19,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     private Context context;
     private ArrayList<Movie> movies;
 
+    public interface MovieAdapterOnClickHandler {
+        void onClick();
+    }
+
     public class MovieViewHolder extends RecyclerView.ViewHolder {
 
         ImageView moviePoster;
