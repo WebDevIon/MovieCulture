@@ -23,7 +23,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DiscoveryActivity extends AppCompatActivity {
+/**
+ * This activity is the main activity of the app, it displays the movie grid
+ * arranged by the user preference.
+ */
+
+public class DiscoveryActivity extends AppCompatActivity implements
+        MovieAdapter.MovieAdapterOnClickHandler {
 
     private static final String TAG = DiscoveryActivity.class.getSimpleName();
     public RecyclerView mRecyclerView;
@@ -56,7 +62,7 @@ public class DiscoveryActivity extends AppCompatActivity {
             public void onResponse(@NonNull Call<MovieResponse> call,
                                    @NonNull Response<MovieResponse> response) {
                 mMovies = response.body().getResults();
-                MovieAdapter adapter = new MovieAdapter(mMovies, getApplicationContext());
+                MovieAdapter adapter = new MovieAdapter(mMovies, getApplicationContext(), DiscoveryActivity.this);
                 mRecyclerView.setAdapter(adapter);
             }
 
@@ -68,14 +74,38 @@ public class DiscoveryActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Method used to handle the clicks on the objects in the grid.
+     * @param movie the movie that the user has clicked on is passed to this method
+     *              and from it we transfer all the attributes with the intent as key
+     *              value pairs.
+     */
+    @Override
+    public void onClick(Movie movie) {
+        String date = reverseDate(movie.getReleaseDate());
+        Intent movieDetailIntent = new Intent(DiscoveryActivity.this, DetailActivity.class);
+        movieDetailIntent.putExtra(Movie.MOVIE_TITLE, movie.getTitle());
+        movieDetailIntent.putExtra(Movie.RELEASE_DATE, date);
+        movieDetailIntent.putExtra(Movie.POSTER_PATH, movie.getPosterPath());
+        movieDetailIntent.putExtra(Movie.VOTE_AVERAGE, (movie.getVoteAverage()).toString());
+        movieDetailIntent.putExtra(Movie.OVERVIEW, movie.getOverview());
+        startActivity(movieDetailIntent);
+    }
 
+    /**
+     * Method used to reverse the date string from yyyy-mm-dd to dd-mm-yyyy.
+     * @param date the date retrieved from the API
+     * @return the reversed date as a String.
+     */
+    private String reverseDate (String date) {
+        String[] separated = date.split("-");
+        return separated[2] + "-" + separated[1] + "-" + separated[0];
+    }
 
     /**
      * This method is responsible for getting the current preference setting value regarding
      * the movie sort order.
-     *
      * @param sharedPreferences the SharedPreferences that contains the setting value.
-     *
      * @return the string that contains the value needed to sort the movies.
      */
     public String getSearchParamFromPreferences (SharedPreferences sharedPreferences) {
@@ -85,12 +115,9 @@ public class DiscoveryActivity extends AppCompatActivity {
 
     /**
      * This is where we inflate and set up the menu for this Activity.
-     *
      * @param menu The options menu in which you place your items.
-     *
      * @return You must return true for the menu to be displayed;
      *         if you return false it will not be shown.
-     *
      * @see #onOptionsItemSelected
      */
     @Override
@@ -107,9 +134,7 @@ public class DiscoveryActivity extends AppCompatActivity {
 
     /**
      * Callback invoked when a menu item was selected from this Activity's menu.
-     *
      * @param item The menu item that was selected by the user
-     *
      * @return true if you handle the menu click here, false otherwise
      */
     @Override

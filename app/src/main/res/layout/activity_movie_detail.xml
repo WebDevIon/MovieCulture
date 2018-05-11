@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!-- This layout arrangement is used when the device is in portrait orientation. -->
+
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android">
 

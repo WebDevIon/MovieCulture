@@ -19,6 +19,17 @@
             </intent-filter>
         </activity>
 
+        <!--The manifest entry for our DetailActivity -->
+        <activity
+            android:name=".DetailActivity"
+            android:label="@string/title_activity_movie_detail"
+            android:parentActivityName=".DiscoveryActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DiscoveryActivity"/>
+        </activity>
+
         <!-- The manifest entry for Settings Activity -->
         <activity
             android:name=".SettingsActivity"

@@ -7,15 +7,22 @@ import com.google.gson.annotations.SerializedName;
  * attributes recieved from TMDB API.
  */
 public class Movie {
-    @SerializedName("title")
+
+    public static final String MOVIE_TITLE = "title";
+    public static final String RELEASE_DATE = "release_date";
+    public static final String POSTER_PATH = "poster_path";
+    public static final String VOTE_AVERAGE = "vote_average";
+    public static final String OVERVIEW = "overview";
+
+    @SerializedName(MOVIE_TITLE)
     private String title;
-    @SerializedName("release_date")
+    @SerializedName(RELEASE_DATE)
     private String releaseDate;
-    @SerializedName("poster_path")
+    @SerializedName(POSTER_PATH)
     private String posterPath;
-    @SerializedName("vote_average")
+    @SerializedName(VOTE_AVERAGE)
     private Double voteAverage;
-    @SerializedName("overview")
+    @SerializedName(OVERVIEW)
     private String overview;
 
     /**

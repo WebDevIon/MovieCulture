@@ -7,6 +7,9 @@
     <!-- Application name -->
     <string name="app_name" translatable="false">Movie Culture</string>
 
+    <!-- Movie detail string also used as the label of Movie Details activity -->
+    <string name="title_activity_movie_detail">Details</string>
+
     <!-- Settings menu string also used as the label of Settings activity -->
     <string name="settings_menu_option">Settings</string>
 

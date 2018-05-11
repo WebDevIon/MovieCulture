@@ -25,9 +25,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
 
     /**
      * Method used to set the summary of the preference to the current value
-     *
      * @param preference the preference that we want to set the summary of the current value
-     *
      * @param value the current value of the preference.
      */
     private void setPreferenceSummary(Preference preference, Object value) {
