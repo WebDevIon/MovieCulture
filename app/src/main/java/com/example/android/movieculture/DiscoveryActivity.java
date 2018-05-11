@@ -32,8 +32,8 @@ public class DiscoveryActivity extends AppCompatActivity implements
         MovieAdapter.MovieAdapterOnClickHandler {
 
     private static final String TAG = DiscoveryActivity.class.getSimpleName();
-    public RecyclerView mRecyclerView;
-    public ArrayList<Movie> mMovies = new ArrayList<>();
+    private RecyclerView mRecyclerView;
+    private ArrayList<Movie> mMovies = new ArrayList<>();
     public static String mSearchParam;
 
     @Override
@@ -108,7 +108,7 @@ public class DiscoveryActivity extends AppCompatActivity implements
      * @param sharedPreferences the SharedPreferences that contains the setting value.
      * @return the string that contains the value needed to sort the movies.
      */
-    public String getSearchParamFromPreferences (SharedPreferences sharedPreferences) {
+    private String getSearchParamFromPreferences(SharedPreferences sharedPreferences) {
         return sharedPreferences.getString(getString(R.string.sort_key),
                 getString(R.string.sort_by_popularity));
     }

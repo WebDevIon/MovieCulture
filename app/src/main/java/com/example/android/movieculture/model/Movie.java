@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  * This class is responsible for creating Movie objects which will store the needed movie
- * attributes recieved from TMDB API.
+ * attributes received from TMDB API.
  */
 public class Movie {
 

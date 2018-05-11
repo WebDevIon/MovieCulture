@@ -11,7 +11,7 @@ import retrofit2.http.Query;
  * This interface is responsible for holding the endpoints and the details of the parameters
  * and the request method for the Retrofit.
  */
-public interface TheMovieDatabaseAPI {
+interface TheMovieDatabaseAPI {
     @GET("movie/{sortBy}")
     Call<MovieResponse> getMovies(@Path("sortBy") String sortBy,
                                   @Query(ApiClient.API_KEY_PARAM) String api_key);
