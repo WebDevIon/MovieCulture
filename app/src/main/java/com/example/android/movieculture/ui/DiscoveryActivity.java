@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
@@ -45,8 +44,8 @@ public class DiscoveryActivity extends AppCompatActivity implements
 
         // Here we initialize the RecyclerView and set the type of LayoutManager.
         mRecyclerView = findViewById(R.id.discovery_activity_rv);
-        GridLayoutManager layoutManager =
-                new GridLayoutManager(this, 2);
+        GridAutoFitLayoutManager layoutManager =
+                new GridAutoFitLayoutManager(this, 600);
         mRecyclerView.setLayoutManager(layoutManager);
 
         // Here we check to see if the search parameter was initialized, if not then we set it
