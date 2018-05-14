@@ -1,4 +1,4 @@
-package com.example.android.movieculture;
+package com.example.android.movieculture.ui;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceScreen;
 
+import com.example.android.movieculture.R;
 import com.example.android.movieculture.rest.ApiClient;
 
 /**

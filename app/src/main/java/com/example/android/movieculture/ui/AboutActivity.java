@@ -1,18 +1,19 @@
-package com.example.android.movieculture;
+package com.example.android.movieculture.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-/**
- * This activity is responsible for displaying the {@link SettingsFragment}
- */
+import com.example.android.movieculture.R;
 
-public class SettingsActivity extends AppCompatActivity {
+/**
+ * This activity is responsible of showing information about the app.
+ */
+public class AboutActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_about);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
         //noinspection ConstantConditions
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

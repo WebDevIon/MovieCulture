@@ -1,4 +1,4 @@
-package com.example.android.movieculture;
+package com.example.android.movieculture.model;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.android.movieculture.model.Movie;
+import com.example.android.movieculture.R;
 import com.example.android.movieculture.rest.ApiClient;
 import com.squareup.picasso.Picasso;
 
@@ -39,7 +39,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
      * @param context the context of the application.
      * @param clickHandler the click handler.
      */
-    MovieAdapter(ArrayList<Movie> movies, Context context, MovieAdapterOnClickHandler clickHandler) {
+    public MovieAdapter(ArrayList<Movie> movies, Context context, MovieAdapterOnClickHandler clickHandler) {
         this.movies = movies;
         this.context = context;
         this.clickHandler = clickHandler;

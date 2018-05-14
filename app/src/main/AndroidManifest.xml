@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DiscoveryActivity">
+        <activity android:name=".ui.DiscoveryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,33 +21,33 @@
 
         <!--The manifest entry for our DetailActivity -->
         <activity
-            android:name=".DetailActivity"
+            android:name=".ui.DetailActivity"
             android:label="@string/title_activity_movie_detail"
-            android:parentActivityName=".DiscoveryActivity"
+            android:parentActivityName=".ui.DiscoveryActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".DiscoveryActivity"/>
+                android:value=".ui.DiscoveryActivity"/>
         </activity>
 
         <!-- The manifest entry for Settings Activity -->
         <activity
-            android:name=".SettingsActivity"
+            android:name=".ui.SettingsActivity"
             android:label="@string/settings_menu_option"
-            android:parentActivityName=".DiscoveryActivity">
+            android:parentActivityName=".ui.DiscoveryActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".DiscoveryActivity"/>
+                android:value=".ui.DiscoveryActivity"/>
         </activity>
 
         <!-- The manifest entry for About Activity -->
         <activity
-            android:name=".AboutActivity"
+            android:name=".ui.AboutActivity"
             android:label="@string/about_menu_option"
-            android:parentActivityName=".DiscoveryActivity">
+            android:parentActivityName=".ui.DiscoveryActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".DiscoveryActivity"/>
+                android:value=".ui.DiscoveryActivity"/>
         </activity>
 
     </application>

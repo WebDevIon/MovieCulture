@@ -1,4 +1,4 @@
-package com.example.android.movieculture;
+package com.example.android.movieculture.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,7 +13,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.example.android.movieculture.R;
 import com.example.android.movieculture.model.Movie;
+import com.example.android.movieculture.model.MovieAdapter;
 import com.example.android.movieculture.model.MovieResponse;
 import com.example.android.movieculture.rest.ApiClient;
 

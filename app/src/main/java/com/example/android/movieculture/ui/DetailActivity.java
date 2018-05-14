@@ -1,4 +1,4 @@
-package com.example.android.movieculture;
+package com.example.android.movieculture.ui;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
+import com.example.android.movieculture.R;
 import com.example.android.movieculture.databinding.ActivityMovieDetailBinding;
 import com.example.android.movieculture.model.Movie;
 import com.example.android.movieculture.rest.ApiClient;
