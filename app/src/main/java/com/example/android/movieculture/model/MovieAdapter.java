@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * This is a custom Adapter which is responsible for loading the movie posters in
  * the Discovery Activity and it also has the interface which is implemented and
- * overwritten in Detail Activity to handle the object clicks.
+ * overwritten in Discovery Activity to handle the object clicks.
  */
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
@@ -39,7 +39,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
      * @param context the context of the application.
      * @param clickHandler the click handler.
      */
-    public MovieAdapter(ArrayList<Movie> movies, Context context, MovieAdapterOnClickHandler clickHandler) {
+    public MovieAdapter(ArrayList<Movie> movies, Context context,
+                        MovieAdapterOnClickHandler clickHandler) {
         this.movies = movies;
         this.context = context;
         this.clickHandler = clickHandler;

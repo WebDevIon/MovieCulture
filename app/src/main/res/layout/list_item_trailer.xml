@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- This is a row which will contain a trailer and will
+    populate the recyclerView with trailers -->
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="62dp">
+
+    <ImageView
+        android:id="@+id/detail_activity_play_button_iv"
+        style="@style/play_icon_iv_style"
+        android:contentDescription="@string/detail_activity_play_button_description"
+        android:src="@drawable/ic_play_circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/detail_activity_trailer_title_tv"
+        style="@style/movie_trailer_title_tv_style"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/detail_activity_play_button_iv"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/trailer_test_string" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

@@ -97,4 +97,45 @@
         <item name="android:layout_marginStart">32dp</item>
     </style>
 
+    <!-- Movie trailer title style -->
+    <style name="movie_trailer_title_tv_style" parent="movie_detail_general_text_style">
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+    </style>
+
+    <!-- Play icon from the trailer list style -->
+    <style name="play_icon_iv_style">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+    </style>
+
+    <!-- Reviewer name string style -->
+    <style name="movie_detail_reviewer_name_tv_style" parent="movie_detail_general_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <!-- Review content style -->
+    <style name="movie_detail_review_tv_style" parent="movie_detail_general_text_style">
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginStart">32dp</item>
+    </style>
+
+    <!-- Trailers string style -->
+    <style name="movie_detail_trailers_string_tv_style" parent="movie_detail_general_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <!-- Reviews string style -->
+    <style name="movie_detail_reviews_string_tv_style" parent="movie_detail_general_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
 </resources>

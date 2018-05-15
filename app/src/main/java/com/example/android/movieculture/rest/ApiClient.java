@@ -42,7 +42,7 @@ public class ApiClient {
      *
      * @return the Call<MovieResponse> object
      */
-    public static Call<MovieResponse> getCall(String searchParam) {
+    public static Call<MovieResponse> getMoviesCall(String searchParam) {
         TheMovieDatabaseAPI api = getClient().create(TheMovieDatabaseAPI.class);
         return api.getMovies(searchParam, API_KEY);
     }

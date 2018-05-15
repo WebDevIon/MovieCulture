@@ -73,6 +73,9 @@
     <!-- Content description for the movie poster in detail activity -->
     <string name="detail_activity_movie_poster_description">Movie poster</string>
 
+    <!-- Content description for the play button in detail activity -->
+    <string name="detail_activity_play_button_description">Play button</string>
+
     <!-- Release date string in detail activity -->
     <string name="release_date_string">Release date:</string>
 
@@ -81,6 +84,12 @@
 
     <!-- Plot synopsis string in detail activity -->
     <string name="plot_synopsis_string">Plot synopsis:</string>
+
+    <!-- Trailers string in detail activity -->
+    <string name="trailers_string">Trailers:</string>
+
+    <!-- User reviews string in detail activity -->
+    <string name="reviews_string">User reviews:</string>
 
 
     <!-- - - - - - - - - - - - - - - - - - - - - -
@@ -100,5 +109,14 @@
     <string name="plot_synopsis_test_string" translatable="false">
         Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.
     </string>
+
+    <!-- Test string for the trailer title -->
+    <string name="trailer_test_string" translatable="false">Official Trailer</string>
+
+    <!-- Test string for the reviewer name -->
+    <string name="reviewer_name_test_string" translatable="false">Screen-Space</string>
+
+    <!-- Test string for the review -->
+    <string name="review_test_string" translatable="false">It is a bold undertaking, to readjust what is expected of the MCU/Avengers formula, and there are moments when the sheer scale and momentum match the narrative ambition...</string>
 
 </resources>

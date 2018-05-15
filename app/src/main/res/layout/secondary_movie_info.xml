@@ -21,7 +21,6 @@
         <TextView
             android:id="@+id/detail_activity_plot_synopsis_tv"
             style="@style/movie_detail_description_tv_style"
-            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

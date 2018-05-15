@@ -32,6 +32,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+            <include
+                android:id="@+id/trailer_info"
+                layout="@layout/movie_trailer_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <include
+                android:id="@+id/review_info"
+                layout="@layout/movie_review_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
 
     </ScrollView>

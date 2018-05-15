@@ -58,7 +58,7 @@ public class DiscoveryActivity extends AppCompatActivity implements
 
         // Here we start the Retrofit enqueue and we populate he ArrayList mMovies with Movie
         // objects accordingly to the network response.
-        ApiClient.getCall(mSearchParam).enqueue(new Callback<MovieResponse>() {
+        ApiClient.getMoviesCall(mSearchParam).enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(@NonNull Call<MovieResponse> call,
                                    @NonNull Response<MovieResponse> response) {

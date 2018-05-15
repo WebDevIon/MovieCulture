@@ -92,7 +92,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
         // a Call<MovieResponse> object specific to the new URL.
         if (key.equals(getString(R.string.sort_key))) {
             DiscoveryActivity.mSearchParam = sharedPreferences.getString(key, "");
-            ApiClient.getCall(DiscoveryActivity.mSearchParam);
+            ApiClient.getMoviesCall(DiscoveryActivity.mSearchParam);
         }
 
         // Here we update the preference summary when a preference is changed.
