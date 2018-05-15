@@ -45,7 +45,7 @@ public class DiscoveryActivity extends AppCompatActivity implements
         // Here we initialize the RecyclerView and set the type of LayoutManager.
         mRecyclerView = findViewById(R.id.discovery_activity_rv);
         GridAutoFitLayoutManager layoutManager =
-                new GridAutoFitLayoutManager(this, 600);
+                new GridAutoFitLayoutManager(this, 500);
         mRecyclerView.setLayoutManager(layoutManager);
 
         // Here we check to see if the search parameter was initialized, if not then we set it

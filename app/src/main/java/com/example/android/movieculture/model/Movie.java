@@ -13,6 +13,7 @@ public class Movie {
     public static final String POSTER_PATH = "poster_path";
     public static final String VOTE_AVERAGE = "vote_average";
     public static final String OVERVIEW = "overview";
+    public static final String MOVIE_ID = "id";
 
     @SerializedName(MOVIE_TITLE)
     private String title;
@@ -24,21 +25,25 @@ public class Movie {
     private Double voteAverage;
     @SerializedName(OVERVIEW)
     private String overview;
+    @SerializedName(MOVIE_ID)
+    private Integer movieId;
 
     /**
-     * Constructor for the Movie class.
+     * Constructor for the Movie object.
      * @param title the title of the movie.
      * @param releaseDate the release date of the movie.
      * @param posterPath the URL path to the movie poster.
      * @param voteAverage the vote average of the movie.
      * @param overview the plot synopsis.
      */
-    public Movie(String title, String releaseDate, String posterPath, Double voteAverage, String overview) {
+    public Movie(String title, String releaseDate, String posterPath, Double voteAverage,
+                 String overview, Integer movieId) {
         this.title = title;
         this.releaseDate = releaseDate;
         this.posterPath = posterPath;
         this.voteAverage = voteAverage;
         this.overview = overview;
+        this.movieId = movieId;
     }
 
     /**
@@ -82,5 +87,13 @@ public class Movie {
 
     public String getOverview() {
         return overview;
+    }
+
+    public void setMovieId(Integer movieId) {
+        this.movieId = movieId;
+    }
+
+    public Integer getMovieId() {
+        return movieId;
     }
 }
