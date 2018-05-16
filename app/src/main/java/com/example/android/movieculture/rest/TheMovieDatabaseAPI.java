@@ -19,10 +19,10 @@ interface TheMovieDatabaseAPI {
                                   @Query(ApiClient.API_KEY_PARAM) String api_key);
 
     @GET("movie/{id}/videos")
-    Call<TrailerResponse> getTrailers(@Path("id") String movieId,
+    Call<TrailerResponse> getTrailers(@Path("id") int movieId,
                                       @Query(ApiClient.API_KEY_PARAM) String api_key);
 
     @GET("movie/{id}/reviews")
-    Call<ReviewResponse> getReviews(@Path("id") String movieId,
+    Call<ReviewResponse> getReviews(@Path("id") int movieId,
                                     @Query(ApiClient.API_KEY_PARAM) String api_key);
 }

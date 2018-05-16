@@ -3,8 +3,12 @@ package com.example.android.movieculture.model;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.android.movieculture.R;
 
 import java.util.ArrayList;
 
@@ -45,10 +49,13 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.TrailerV
      */
     class TrailerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        final TextView trailerTitle;
+
         public TrailerViewHolder(View itemView) {
             super(itemView);
 
-            //TODO: Add the views and set the click handler.
+            trailerTitle = itemView.findViewById(R.id.detail_activity_trailer_title_tv);
+            itemView.setOnClickListener(this);
         }
 
         /**
@@ -65,19 +72,37 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.TrailerV
         }
     }
 
+    /**
+     * This method creates each ViewHolder.
+     * @param parent the ViewGroup that contains these ViewHolders.
+     * @param viewType the int which define which kind of viewType we want to populate.
+     * @return the TrailerViewHolder that holds the View for each list item.
+     */
     @NonNull
     @Override
     public TrailerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        int layoutId = R.layout.list_item_trailer;
+
+        View view = LayoutInflater.from(context).inflate(layoutId, parent, false);
+        return new TrailerViewHolder(view);
     }
 
+    /**
+     * In this method we update the contents of the ViewHolder for that given position.
+     * @param holder the ViewHolder that will have it's contents updated.
+     * @param position the position within the adapter.
+     */
     @Override
     public void onBindViewHolder(@NonNull TrailerViewHolder holder, int position) {
-
+        holder.trailerTitle.setText(trailers.get(position).getTrailerName());
     }
 
+    /**
+     * This item returns the number of items to display.
+     * @return the number of items available in our trailer list.
+     */
     @Override
     public int getItemCount() {
-        return 0;
+        return trailers.size();
     }
 }

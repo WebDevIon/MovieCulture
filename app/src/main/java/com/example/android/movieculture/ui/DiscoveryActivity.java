@@ -56,7 +56,7 @@ public class DiscoveryActivity extends AppCompatActivity implements
             mSearchParam = getSearchParamFromPreferences(prefs);
         }
 
-        // Here we start the Retrofit enqueue and we populate he ArrayList mMovies with Movie
+        // Here we start the Retrofit enqueue and we populate the ArrayList mMovies with Movie
         // objects accordingly to the network response.
         ApiClient.getMoviesCall(mSearchParam).enqueue(new Callback<MovieResponse>() {
             @Override
@@ -90,6 +90,7 @@ public class DiscoveryActivity extends AppCompatActivity implements
         movieDetailIntent.putExtra(Movie.POSTER_PATH, movie.getPosterPath());
         movieDetailIntent.putExtra(Movie.VOTE_AVERAGE, (movie.getVoteAverage()).toString());
         movieDetailIntent.putExtra(Movie.OVERVIEW, movie.getOverview());
+        movieDetailIntent.putExtra(Movie.MOVIE_ID, movie.getMovieId());
         startActivity(movieDetailIntent);
     }
 
