@@ -50,6 +50,12 @@
                 android:value=".ui.DiscoveryActivity"/>
         </activity>
 
+        <!-- The content provider for our database. -->
+        <provider
+            android:authorities="@string/content_authority"
+            android:name=".data.MovieProvider"
+            android:exported="false"/>
+
     </application>
 
 </manifest>

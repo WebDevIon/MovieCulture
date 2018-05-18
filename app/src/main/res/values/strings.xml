@@ -16,6 +16,9 @@
     <!-- About menu string also used as the label of About activity -->
     <string name="about_menu_option">About</string>
 
+    <!-- String containing the content authority. -->
+    <string name="content_authority">com.example.android.movieculture</string>
+
 
     <!-- - - - - - - - - - - - - - - - -
       - Used by MovieCulture Discovery -
