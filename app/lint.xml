@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconDipSize">
+        <ignore path="src/main/res/drawable-hdpi/detail_activity_test_image.png" />
+        <ignore path="src/main/res/drawable-mdpi/detail_activity_test_image.png" />
+        <ignore path="src/main/res/drawable-xhdpi/detail_activity_test_image.png" />
+        <ignore path="src/main/res/drawable-xxhdpi/detail_activity_test_image.png" />
+        <ignore path="src/main/res/drawable-xxxhdpi/detail_activity_test_image.png" />
+        <ignore path="src/main/res/drawable-xxxhdpi/detail_activity_test_image.png" />
+        <ignore path="src/main/res/drawable-xxxhdpi/detail_activity_test_image.png" />
+        <ignore path="src/main/res/drawable-xxxhdpi/detail_activity_test_image.png" />
+    </issue>
+</lint>

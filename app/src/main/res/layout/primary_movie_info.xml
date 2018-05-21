@@ -61,10 +61,17 @@
             android:id="@+id/detail_activity_vote_average_tv"
             style="@style/movie_detail_general_text_style"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/rating"
             tools:text="@string/average_rating_test_string" />
+
+        <ToggleButton
+            android:id="@+id/favorite_toggle_button"
+            style="@style/favorite_button_style"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_activity_vote_average_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/detail_activity_vote_average_tv"
+            app:layout_constraintTop_toTopOf="@+id/detail_activity_vote_average_tv" />
 
     </android.support.constraint.ConstraintLayout>
 

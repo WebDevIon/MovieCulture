@@ -6,6 +6,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.android.movieculture.data.MovieContract.MovieEntry;
 
+/**
+ * This class is responsible for creating the database.
+ */
 public class MovieDbHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "movies.db";
@@ -21,7 +24,8 @@ public class MovieDbHelper extends SQLiteOpenHelper {
                 "CREATE TABLE " + MovieEntry.TABLE_NAME + "( " +
                 MovieEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 MovieEntry.COLUMN_MOVIE_TITLE + " TEXT NOT NULL, " +
-                MovieEntry.COLUMN_MOVIE_ID + " INTEGER NOT NULL);";
+                MovieEntry.COLUMN_MOVIE_ID + " INTEGER NOT NULL, " +
+                " UNIQUE (" + MovieEntry.COLUMN_MOVIE_ID + ") ON CONFLICT REPLACE);";
 
         sqLiteDatabase.execSQL(SQL_CREATE_MOVIE_TABLE);
     }

@@ -94,6 +94,12 @@
     <!-- User reviews string in detail activity -->
     <string name="reviews_string">User reviews:</string>
 
+    <!-- Toast message string confirming that the movie was added to the database -->
+    <string name="toast_movie_added_string">Added to favorites</string>
+
+    <!-- Toast message string confirming that the movie was removed from the database -->
+    <string name="toast_movie_removed_string">Removed from favorites</string>
+
 
     <!-- - - - - - - - - - - - - - - - - - - - - -
       - Dummy data for the movie detail activity -
