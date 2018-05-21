@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.android.movieculture.R;
-import com.example.android.movieculture.data.MovieContract;
+import com.example.android.movieculture.data.MovieContract.MovieEntry;
 import com.example.android.movieculture.databinding.ActivityMovieDetailBinding;
 import com.example.android.movieculture.model.Movie;
 import com.example.android.movieculture.model.Review;
@@ -49,7 +49,11 @@ public class DetailActivity extends AppCompatActivity implements
     private ActivityMovieDetailBinding mMovieDetailBinding;
     private ArrayList<Trailer> mTrailersList = new ArrayList<>();
     private ArrayList<Review> mReviewsList = new ArrayList<>();
-    private Intent mIntent;
+    private String mMovieTitle;
+    private String mPosterPath;
+    private String mReleaseDate;
+    private String mVoteAverage;
+    private String mSynopsis;
     private Integer mMovieID;
     private Uri mMovieWithIdUri;
 
@@ -60,35 +64,39 @@ public class DetailActivity extends AppCompatActivity implements
         mMovieDetailBinding = DataBindingUtil.setContentView(
                 this, R.layout.activity_movie_detail);
 
-        mIntent = getIntent();
+        // Here we get the data about the movie passed from the DiscoveryActivity.
+        Intent mIntent = getIntent();
+        mMovieTitle = mIntent.getStringExtra(Movie.MOVIE_TITLE);
+        mPosterPath = mIntent.getStringExtra(Movie.POSTER_PATH);
+        mReleaseDate = mIntent.getStringExtra(Movie.RELEASE_DATE);
+        mVoteAverage = mIntent.getStringExtra(Movie.VOTE_AVERAGE);
+        mSynopsis = mIntent.getStringExtra(Movie.OVERVIEW);
+        mMovieID = mIntent.getIntExtra(Movie.MOVIE_ID, -1);
 
         mMovieDetailBinding.titleInfo.detailActivityTitleTv
-                .setText(mIntent.getStringExtra(Movie.MOVIE_TITLE));
+                .setText(mMovieTitle);
 
         mMovieDetailBinding.primaryInfo.detailActivityReleaseDateTv
-                .setText(mIntent.getStringExtra(Movie.RELEASE_DATE));
+                .setText(mReleaseDate);
 
         mMovieDetailBinding.primaryInfo.detailActivityVoteAverageTv
-                .setText(mIntent.getStringExtra(Movie.VOTE_AVERAGE));
+                .setText(mVoteAverage);
 
         mMovieDetailBinding.secondaryInfo.detailActivityPlotSynopsisTv
-                .setText(mIntent.getStringExtra(Movie.OVERVIEW));
+                .setText(mSynopsis);
 
         // Here we get the ImageView by it's ID and we set the content using the Picasso library.
         ImageView poster = findViewById(R.id.detail_activity_movie_poster_iv);
         Picasso.get()
-                .load(ApiClient.BASE_IMAGE_URL + mIntent.getStringExtra(Movie.POSTER_PATH))
+                .load(ApiClient.BASE_IMAGE_URL + mPosterPath)
                 .into(poster);
-
-        // Here we get the movie id which is passed from the DiscoveryActivity.
-        mMovieID = mIntent.getIntExtra(Movie.MOVIE_ID, -1);
 
         // Here we set the type of LayoutManager for the trailers RecycleView.
         RecyclerView.LayoutManager trailersLayoutManager =
                 new LinearLayoutManager(this);
         mMovieDetailBinding.trailerInfo.trailersRv.setLayoutManager(trailersLayoutManager);
 
-        // Here we set the type of LayoutManager for the reviews Recyclerview.
+        // Here we set the type of LayoutManager for the reviews RecyclerView.
         RecyclerView.LayoutManager reviewsLayoutManager =
                 new LinearLayoutManager(this);
         mMovieDetailBinding.reviewInfo.reviewsRv.setLayoutManager(reviewsLayoutManager);
@@ -147,7 +155,7 @@ public class DetailActivity extends AppCompatActivity implements
          * The query is made on the main thread because it returns a single value
          * from the database which contains one movie id.
          */
-        mMovieWithIdUri = MovieContract.MovieEntry.buildMoviesUriWithId(mMovieID);
+        mMovieWithIdUri = MovieEntry.buildMoviesUriWithId(mMovieID);
         Cursor cursor = getContentResolver().query(
                 mMovieWithIdUri,
                 null,
@@ -164,7 +172,7 @@ public class DetailActivity extends AppCompatActivity implements
         if (cursor != null && (cursor.getCount() > 0)) {
             try{
                 cursor.moveToFirst();
-                Integer columnIndex = cursor.getColumnIndex(MovieContract.MovieEntry.COLUMN_MOVIE_ID);
+                Integer columnIndex = cursor.getColumnIndex(MovieEntry.COLUMN_MOVIE_ID);
                 Integer result = cursor.getInt(columnIndex);
                 if (result.equals(mMovieID)) {
                     mMovieDetailBinding.primaryInfo.favoriteToggleButton.setChecked(true);
@@ -210,12 +218,15 @@ public class DetailActivity extends AppCompatActivity implements
                             .setBackgroundDrawable(ContextCompat.getDrawable
                                     (getApplicationContext(), R.drawable.ic_star));
 
-                    contentValues.put(MovieContract.MovieEntry.COLUMN_MOVIE_TITLE,
-                            mIntent.getStringExtra(Movie.MOVIE_TITLE));
-                    contentValues.put(MovieContract.MovieEntry.COLUMN_MOVIE_ID, mMovieID);
+                    contentValues.put(MovieEntry.COLUMN_MOVIE_TITLE, mMovieTitle);
+                    contentValues.put(MovieEntry.COLUMN_MOVIE_POSTER_PATH, mPosterPath);
+                    contentValues.put(MovieEntry.COLUMN_RELEASE_DATE, mReleaseDate);
+                    contentValues.put(MovieEntry.COLUMN_USER_RATING, mVoteAverage);
+                    contentValues.put(MovieEntry.COLUMN_SYNOPSIS, mSynopsis);
+                    contentValues.put(MovieEntry.COLUMN_MOVIE_ID, mMovieID);
 
                     getContentResolver().insert(
-                            MovieContract.MovieEntry.CONTENT_URI,
+                            MovieEntry.CONTENT_URI,
                             contentValues);
 
                     Toast.makeText(DetailActivity.this,
