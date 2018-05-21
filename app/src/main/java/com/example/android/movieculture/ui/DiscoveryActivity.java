@@ -2,8 +2,13 @@ package com.example.android.movieculture.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +18,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.android.movieculture.R;
+import com.example.android.movieculture.data.MovieContract;
+import com.example.android.movieculture.data.MovieContract.MovieEntry;
 import com.example.android.movieculture.model.Movie;
 import com.example.android.movieculture.model.MovieAdapter;
 import com.example.android.movieculture.model.MovieResponse;
@@ -30,9 +37,11 @@ import retrofit2.Response;
  */
 
 public class DiscoveryActivity extends AppCompatActivity implements
-        MovieAdapter.MovieAdapterOnClickHandler {
+        MovieAdapter.MovieAdapterOnClickHandler,
+        LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final String TAG = DiscoveryActivity.class.getSimpleName();
+    private static final int ID_MOVIE_LOADER = 112;
     private RecyclerView mRecyclerView;
     private ArrayList<Movie> mMovies = new ArrayList<>();
     public static String mSearchParam;
@@ -56,22 +65,30 @@ public class DiscoveryActivity extends AppCompatActivity implements
             mSearchParam = getSearchParamFromPreferences(prefs);
         }
 
-        // Here we start the Retrofit enqueue and we populate the ArrayList mMovies with Movie
-        // objects accordingly to the network response.
-        ApiClient.getMoviesCall(mSearchParam).enqueue(new Callback<MovieResponse>() {
-            @Override
-            public void onResponse(@NonNull Call<MovieResponse> call,
-                                   @NonNull Response<MovieResponse> response) {
-                mMovies = response.body().getResults();
-                MovieAdapter adapter = new MovieAdapter(mMovies, getApplicationContext(), DiscoveryActivity.this);
-                mRecyclerView.setAdapter(adapter);
-            }
+        if (mSearchParam.equals(getString(R.string.sort_by_favorites))) {
+            // If the search param is "favorites" then we start a loader and query the database
+            // for the movie list.
+            getSupportLoaderManager().initLoader(ID_MOVIE_LOADER, null, this);
 
-            @Override
-            public void onFailure(@NonNull Call<MovieResponse> call, @NonNull Throwable t) {
-                Log.e(TAG, t.toString());
-            }
-        });
+        } else {
+            // Here we start the Retrofit enqueue and we populate the ArrayList mMovies with Movie
+            // objects accordingly to the network response.
+            ApiClient.getMoviesCall(mSearchParam).enqueue(new Callback<MovieResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<MovieResponse> call,
+                                       @NonNull Response<MovieResponse> response) {
+                    mMovies = response.body().getResults();
+                    MovieAdapter adapter = new MovieAdapter(mMovies, getApplicationContext(),
+                            DiscoveryActivity.this);
+                    mRecyclerView.setAdapter(adapter);
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<MovieResponse> call, @NonNull Throwable t) {
+                    Log.e(TAG, t.toString());
+                }
+            });
+        }
 
     }
 
@@ -159,4 +176,75 @@ public class DiscoveryActivity extends AppCompatActivity implements
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * This method is called when the search parameter is set to favorites by the user.
+     * The table movies is queried and the result is stored into a cursor which is passed
+     * to the onLoadFinished method.
+     * @param loaderId the id of the loader.
+     * @param args the arguments that we passed along with the id if there are any.
+     * @return a new cursor that contains the whole movies table.
+     */
+    @NonNull
+    @Override
+    public Loader<Cursor> onCreateLoader(int loaderId, @Nullable Bundle args) {
+        switch (loaderId) {
+            case ID_MOVIE_LOADER:
+                return new CursorLoader(this,
+                        MovieContract.MovieEntry.CONTENT_URI,
+                        null,
+                        null,
+                        null,
+                        null);
+            default:
+                throw new RuntimeException("Loader Not Implemented: " + loaderId);
+        }
+    }
+
+    /**
+     * In this method we check to see if the cursor is not null and it has data in it.
+     * If it has then we load each row of data into Movie objects which we store into a
+     * ArrayList of Movie objects. This list we pass as an argument into our MovieAdapter
+     * constructor and then we set this adapter to the RecyclerView.
+     * @param loader the current Loader<Cursor> object.
+     * @param data the cursor which contains the movies table data.
+     */
+    @Override
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
+        if (data != null && (data.getCount() > 0)) {
+            try {
+                while (data.moveToNext()) {
+                    Integer movieIdIndex = data.getColumnIndex(MovieEntry.COLUMN_MOVIE_ID);
+                    Integer movieId = data.getInt(movieIdIndex);
+                    Integer titleIndex = data.getColumnIndex(MovieEntry.COLUMN_MOVIE_TITLE);
+                    String movieTitle = data.getString(titleIndex);
+                    Integer posterIndex = data.getColumnIndex(MovieEntry.COLUMN_MOVIE_POSTER_PATH);
+                    String posterPath = data.getString(posterIndex);
+                    Integer dateIndex = data.getColumnIndex(MovieEntry.COLUMN_RELEASE_DATE);
+                    String releaseDate = data.getString(dateIndex);
+                    Integer ratingIndex = data.getColumnIndex(MovieEntry.COLUMN_USER_RATING);
+                    Double userRating = Double.parseDouble(data.getString(ratingIndex));
+                    Integer synopsisIndex = data.getColumnIndex(MovieEntry.COLUMN_SYNOPSIS);
+                    String synopsis = data.getString(synopsisIndex);
+                    mMovies.add(new Movie(movieTitle, releaseDate, posterPath,
+                            userRating, synopsis, movieId));
+                }
+            } finally {
+                data.close();
+            }
+
+            MovieAdapter adapter = new MovieAdapter(mMovies, getApplicationContext(),
+                    DiscoveryActivity.this);
+            mRecyclerView.setAdapter(adapter);
+        }
+
+    }
+
+    /**
+     * If the loader is reset we set the current loader to be null.
+     * @param loader the current Loader<Cursor> object.
+     */
+    @Override
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
+        loader = null;
+    }
 }
